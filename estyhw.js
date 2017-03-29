@@ -8,7 +8,7 @@
 
 
 
-// calculate the average price of all items 
+// calculate the average price of all items
 
 var items = require('./esty.js');
 // console.log(items[0].price)
@@ -22,13 +22,14 @@ var myPriceArray = items.map(price)
 // console.log(myArray)
 var sum = myPriceArray.reduce(add, 0);
 
+
 function add(a, b) {
     return a + b;
 }
 // console.log(sum)
 
 var average = sum / items.length;
-// console.log('The average price is ' , average); This is the answer 
+// console.log('The average price is ' , average); This is the answer
 
 
 // Get an array of items that cost between $14.00 and $18.00 USD
@@ -67,62 +68,43 @@ var allCurrencyArray = items.filter(item => item.currency_code === "GBP")
 
 
 
-
-
-
-
-
-
 // Display a list of all items which are made of wood.
 
-function materialArray(material){
-	return material.materials
-}
+// function materialArray(material){
+// 	return material.materials
+// }
+//
+// // console.log(materialArray);
+//
+// var allMaterialArrays = items.filter(materialArray)
+//
+// // console.log(allMaterialArrays)
 
-// console.log(materialArray);
+var allWoodenObjects = items.filter(item => item.materials.includes('wood'))
 
-var allMaterialArrays = items.filter(materialArray)
+// console.log(allWoodenObjects) This is the answer
 
-// console.log(allMaterialArrays)
+// var answer = allWoodenArrays.forEach( item => item.title == "wood")
 
-var allWoodenArrays = allMaterialArrays.filter(item => item.materials == "wood")
-
-// console.log(allWoodenArrays)
-
-var answer = allWoodenArrays.forEach( item => item.title == "wood")
-
-console.log(answer)
+// console.log(answer)
 
 
 // Which items are made of eight or more materials? Display the name, number of items and the items it is made of.
 
 
+var manyMaterials = items.filter( item => item.materials.length >= 8 )
+.map(item => [item.title, item.materials.length , item.materials]);
 
-
-
-
-
-
-
-
-
-
-
+function someMaterial (item){
+	return item.materials.length >= 8
+}
+// console.log('This is name, material length and contents of the materials' , manyMaterials)
 
 
 
 
 // How many items were made by their sellers?
 
+var sellerItems = items.filter( item => item.who_made === 'i_did')
 
-
-
-
-
-
-
-
-
-
-
-
+// console.log('There are ' , sellerItems.length , 'that I did made') This is the answer!
